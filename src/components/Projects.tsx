@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -73,6 +72,7 @@ export function Projects() {
       description: "Troubleshooting and maintaining IT infrastructure in a pharmaceutical environment.",
       image: "/placeholder.svg",
       technologies: ["IT Support", "Networking", "Hardware Maintenance"],
+      links: {},
       type: "professional"
     },
     {
@@ -80,6 +80,7 @@ export function Projects() {
       description: "Network installation and maintenance for telecommunications company.",
       image: "/placeholder.svg",
       technologies: ["Network Installation", "Technical Support", "Cable Management"],
+      links: {},
       type: "professional"
     },
   ];
