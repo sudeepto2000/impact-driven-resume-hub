@@ -8,7 +8,7 @@ export function Hero() {
     <section className="min-h-screen flex flex-col justify-center relative px-6 md:px-10">
       <div className="max-w-7xl mx-auto w-full pt-20">
         <div className="flex flex-col md:flex-row md:items-center gap-10 md:gap-20">
-          <div className="flex-1 space-y-6 animate-slide-up" style={{ animationDelay: "0.1s" }}>
+          <div className="flex-1 space-y-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
             <div className="inline-block rounded-full bg-accent px-3 py-1 text-sm font-medium animate-fade-in" style={{ animationDelay: "0.5s" }}>
               Computer Programmer
             </div>
