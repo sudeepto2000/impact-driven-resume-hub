@@ -1,7 +1,10 @@
+
 import React from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Github, ExternalLink } from 'lucide-react';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface Project {
   title: string;
@@ -20,7 +23,7 @@ export function Projects() {
     {
       title: "Quick Park (Capstone Project)",
       description: "Smart parking management system that optimizes parking space usage, reduces congestion, and improves accessibility through real-time slot tracking and booking.",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e",
       technologies: ["React", "Node.js", "IoT", "AI"],
       links: {
         github: "https://github.com/sudeepto2000/quick-park",
@@ -30,7 +33,7 @@ export function Projects() {
     {
       title: "House Price Prediction",
       description: "Machine learning model for home price prediction developed for a Kaggle competition.",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
       technologies: ["Python", "Machine Learning", "Data Analysis"],
       links: {
         github: "https://github.com/sudeepto2000/house-price-prediction",
@@ -40,7 +43,7 @@ export function Projects() {
     {
       title: "React Native Flooring Cost Calculator",
       description: "Mobile app to calculate flooring costs for different materials and room dimensions.",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
       technologies: ["React Native", "JavaScript", "Mobile Development"],
       links: {
         github: "https://github.com/sudeepto2000/flooring-calculator",
@@ -50,7 +53,7 @@ export function Projects() {
     {
       title: "Tennis Playability Decision Tree Model",
       description: "AI model for weather-based game decisions using decision tree algorithms.",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5",
       technologies: ["Python", "ML", "Decision Trees"],
       links: {
         github: "https://github.com/sudeepto2000/tennis-decision-tree",
@@ -60,7 +63,7 @@ export function Projects() {
     {
       title: "Automated Car Wash Kiosk",
       description: "Logic design for automated car wash system with user interface and payment processing.",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1",
       technologies: ["UI/UX", "System Design", "Workflow Automation"],
       links: {
         github: "https://github.com/sudeepto2000/car-wash-kiosk",
@@ -70,7 +73,7 @@ export function Projects() {
     {
       title: "Biopharma IT Infrastructure",
       description: "Troubleshooting and maintaining IT infrastructure in a pharmaceutical environment.",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
       technologies: ["IT Support", "Networking", "Hardware Maintenance"],
       links: {},
       type: "professional"
@@ -78,7 +81,7 @@ export function Projects() {
     {
       title: "Carnival Telecommunications",
       description: "Network installation and maintenance for telecommunications company.",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
       technologies: ["Network Installation", "Technical Support", "Cable Management"],
       links: {},
       type: "professional"
@@ -122,15 +125,23 @@ export function Projects() {
 }
 
 function ProjectCard({ project }: { project: Project }) {
+  const [imageLoaded, setImageLoaded] = React.useState(false);
+
   return (
     <div className="bg-card rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-      <div className="aspect-video bg-muted">
-        <img 
-          src={project.image} 
-          alt={project.title} 
-          className="w-full h-full object-cover"
-          loading="lazy"
-        />
+      <div className="relative">
+        <AspectRatio ratio={16/9}>
+          {!imageLoaded && (
+            <Skeleton className="absolute inset-0 h-full w-full" />
+          )}
+          <img 
+            src={project.image} 
+            alt={project.title} 
+            className={`w-full h-full object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+            loading="lazy"
+            onLoad={() => setImageLoaded(true)}
+          />
+        </AspectRatio>
       </div>
       <div className="p-6">
         <h4 className="text-xl font-semibold mb-2">{project.title}</h4>
